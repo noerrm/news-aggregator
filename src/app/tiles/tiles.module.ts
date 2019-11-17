@@ -7,6 +7,9 @@ import { NewsComponent } from './news/news.component';
 
 @NgModule({
   declarations: [NewsComponent],
+  exports: [
+    NewsComponent
+  ],
   imports: [
     CommonModule,
     TilesRoutingModule

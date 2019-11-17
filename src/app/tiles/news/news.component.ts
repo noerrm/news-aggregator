@@ -15,7 +15,7 @@ export class NewsComponent implements OnInit {
   private subscription: Subscription;
   ngOnInit() {
     this.subscription = this.newsDataService.getNews().subscribe(
-      data => (this.articles = data)
+      data => (this.articles = data['articles'])
     );
   }
 }

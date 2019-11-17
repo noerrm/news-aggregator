@@ -7,6 +7,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { TileDataService } from './tiles/tile-data.service';
+import { TilesModule } from './tiles/tiles.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { TileDataService } from './tiles/tile-data.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TilesModule,
+    HttpClientModule
   ],
   providers: [TileDataService],
   bootstrap: [AppComponent]
