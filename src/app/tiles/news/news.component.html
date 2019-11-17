@@ -1,5 +1,6 @@
 <ul>
   <li *ngFor="let article of articles">
-    {{article}}
+    <h3>{{article.source.name}}</h3>
+    <p>{{article.title}}</p>
   </li>
 </ul>
