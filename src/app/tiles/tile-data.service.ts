@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class TileDataService {
 
-  url = 'https://newsapi.org/v2/top-headlines?' +
-            'country=us&' +
+  url = 'https://newsapi.org/v2/everything?' +
+            'q=(sony OR olympus)&' +
             'apiKey=d8ad46b675d64f0fa48d926952288a17';
 
   constructor(private http: HttpClient) {}
