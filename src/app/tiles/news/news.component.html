@@ -2,5 +2,8 @@
   <li *ngFor="let article of articles">
     <h3>{{article.source.name}}</h3>
     <p>{{article.title}}</p>
+    <div id="image-container">
+    <img src="{{article.urlToImage}}">
+    </div>
   </li>
 </ul>
