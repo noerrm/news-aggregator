@@ -4,6 +4,7 @@
   /* Number of columns: Wrap columns into new rows automatically when needed. */
   /* Columns are a minimum of 240px on small screens and a maximum of 1fr on larger screens. */
   grid-template-columns: repeat(auto-fit, minmax(15em, 1fr))
+  margin: 0 1em
 
 h3
   margin-bottom: 0.5em
@@ -12,7 +13,6 @@ p
   margin-bottom: 0.5em
 
 img
-  margin-bottom: 1em
   /* Prevent images from overflowing. */
   max-width: 100%
   height: auto
@@ -23,9 +23,12 @@ img
   top: 0
 
 #image-container
-  //border-radius: 5px;
-  //box-shadow: 5px 5px 4px 0 rgba(9,130,154,0.2);
+  margin-bottom: 1em
+  //border-radius: 5px
+  //box-shadow: 5px 5px 4px 0 rgba(9,130,154,0.2)
   /* Container for absolute positioned elements. */
   position: relative
-  /* Sets the aspect ration to 16:9 */
+  /* Sets the aspect ratio to 16:9 -> A width of " " % of the parent container. */
   padding-top: 56.25%
+  /* Images that have a bigger height than the parent container are cropped. */
+  overflow: hidden
