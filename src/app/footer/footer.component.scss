@@ -1,0 +1,13 @@
+@import "../../variables";
+
+#footer {
+  background-color: $background-color;
+  overflow: auto
+}
+
+#footer p {
+  color: $text-color-active;
+  font-size: 0.8em;
+  text-align: center;
+  margin: 0.9em auto
+}

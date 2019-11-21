@@ -1,43 +1,49 @@
-@import "../../../variables"
+@import "../../../variables";
 
-\:host
-  display: grid
-  align-items: center
+:host {
+  display: grid;
+  align-items: center;
   /* Number of columns: Wrap columns into new rows automatically when needed. */
   /* Columns are a minimum of 240px on small screens and a maximum of 1fr on larger screens. */
-  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr))
-  padding: 0 1.5em
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  padding: 0 1.5em;
   //background-color: #0E1428
-  background-color: $background-color
+  background-color: $background-color;
+}
 
-h3, p
-  margin-bottom: 0.5em
-  color: $text-color-active
+h3, p {
+  margin-bottom: 0.5em;
+  color: $text-color-active;
+}
 
-img
+img {
   /* Prevent images from overflowing. */
-  max-width: 100%
-  height: auto
+  max-width: 100%;
+  height: auto;
   /* Removed from the normal document flow. Stays at the default position which is its parent div. */
-  position: absolute
+  position: absolute;
   /* Set coordinates to zero. The element now needs to know which parent is its reference point for its position. */
-  left: 0
-  top: 0
+  left: 0;
+  top: 0;
+}
 
-#image-container
+#image-container {
   /* Container for absolute positioned elements. */
-  position: relative
+  position: relative;
   /* Sets the aspect ratio to 16:9 -> A width of " " % of the parent container. */
-  padding-top: 56.25%
+  padding-top: 56.25%;
   /* Images that have a bigger height than the parent container are cropped. */
-  overflow: hidden
+  overflow: hidden;
+}
 
   /* Receives a box shadow on hover. */
-#article-card
-  margin-bottom: 1.2em
+#article-card {
+  margin-bottom: 1.2em;
   /* Define property name the transition is tied to, duration and timing speed. */
-  transition: box-shadow .25s linear
+  transition: box-shadow .25s linear;
+}
 
   /* Focus for mobile and hover for web */
-#article-card:hover, #article-card:focus
-  box-shadow: 3px 3px 7px rgba(240,162,2, 0.9)
+#article-card:hover, #article-card:focus {
+  box-shadow: 3px 3px 7px rgba(240, 162, 2, 0.9);
+}

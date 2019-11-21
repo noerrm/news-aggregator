@@ -6,7 +6,7 @@ import { Article } from '../article';
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
-  styleUrls: ['./news.component.sass']
+  styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
   constructor(private newsDataService: TileDataService) {}
