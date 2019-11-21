@@ -32,12 +32,12 @@ img
   /* Images that have a bigger height than the parent container are cropped. */
   overflow: hidden
 
-
   /* Receives a box shadow on hover. */
 #article-card
   margin-bottom: 1.2em
   /* Define property name the transition is tied to, duration and timing speed. */
   transition: box-shadow .25s linear
 
-#article-card:hover
+  /* Focus for mobile and hover for web */
+#article-card:hover, #article-card:focus
   box-shadow: 3px 3px 7px rgba(240,162,2, 0.9)
