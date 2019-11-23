@@ -1,11 +1,13 @@
 @import "../../../variables";
+@import "../../../media-queries";
 
-:host {
+:host ul {
   display: grid;
   align-items: center;
   /* Number of columns: Wrap columns into new rows automatically when needed. */
-  /* Columns are a minimum of 240px on small screens and a maximum of 1fr on larger screens. */
-  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  /* Columns are a minimum of 240px on small screens and a maximum of 1fr on larger screens. Columnns are fitted automatically in the available space. */
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  grid-gap: 1.25em;
   padding: 0 1.5em;
   //background-color: #0E1428
   background-color: $background-color;

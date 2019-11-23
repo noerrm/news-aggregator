@@ -4,9 +4,10 @@ $breakpoints: (
   'large': 64em
 );
 
+/* On screens smaller than '...' set styles to defined @content */
 @mixin media ($size) {
   @if map_has_key($breakpoints, $size) {
-    @media only screen and (min-width: map_get($breakpoints, $size)) {
+    @media only screen and (max-width: map_get($breakpoints, $size)) {
       @content
     }
   }
