@@ -9,6 +9,7 @@ export class TileDataService {
 
   url = 'https://newsapi.org/v2/everything?' +
             'q=(sony OR olympus)&' +
+            'pageSize=30&' +
             'apiKey=d8ad46b675d64f0fa48d926952288a17';
 
   constructor(private http: HttpClient) {}
