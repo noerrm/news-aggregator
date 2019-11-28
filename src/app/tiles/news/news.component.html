@@ -1,9 +1,11 @@
 <ul>
-  <li *ngFor="let article of articles" id="article-card">
-    <h3>{{article.source.name}}</h3>
-    <p>{{article.title}}</p>
-    <div id="image-container">
-    <img src="{{article.urlToImage}}">
-    </div>
-  </li>
+  <a [routerLink]="['/article']" *ngFor="let article of articles" id="article-card">
+    <li>
+      <h3>{{article.source.name}}</h3>
+      <p>{{article.title}}</p>
+      <div id="image-container">
+      <img src="{{article.urlToImage}}">
+      </div>
+    </li>
+  </a>
 </ul>
