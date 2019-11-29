@@ -1,5 +1,6 @@
 <ul>
-  <a [routerLink]="['/article']" *ngFor="let article of articles" id="article-card">
+  <!-- Navigate to article component and pass state of article property. -->
+  <a [routerLink]="['/article']" [state]="{ state: article }" *ngFor="let article of articles" id="article-card">
     <li>
       <h3>{{article.source.name}}</h3>
       <p>{{article.title}}</p>

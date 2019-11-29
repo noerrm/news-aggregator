@@ -10,9 +10,9 @@ import { Article } from '../article';
 })
 export class NewsComponent implements OnInit {
   constructor(private newsDataService: TileDataService) {}
-
   public articles: Article[];
   private subscription: Subscription;
+
   ngOnInit() {
     this.subscription = this.newsDataService.getNews().subscribe(
       data => (this.articles = data['articles'])
