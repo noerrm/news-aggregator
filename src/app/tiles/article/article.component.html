@@ -1,2 +1,5 @@
-<h1 id="articleComponent"></h1>
-<h3>{{ article['content'] }}</h3>
+<h3>{{ article.title }}</h3>
+<h4>{{ article.author }}</h4>
+<p>{{ article.publishedAt | date }}</p>
+<img src="{{ article.urlToImage }}">
+<p>{{ article.content }}</p>
