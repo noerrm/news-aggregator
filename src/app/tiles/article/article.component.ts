@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Article } from '../article';
 
 @Component({
   selector: 'app-article',
@@ -10,12 +11,14 @@ import { map } from 'rxjs/operators';
 })
 export class ArticleComponent implements OnInit {
   state: Observable<object>;
+  private article: Article;
   constructor(public activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.state = this.activatedRoute.paramMap
       .pipe(map(() => window.history.state));
-    document.getElementById('articleComponent').innerHTML = 'Routing to article component works.';
+    // Convert observable to type article.
+    this.state.subscribe(data => this.article = data['state']);
   }
 
 }
