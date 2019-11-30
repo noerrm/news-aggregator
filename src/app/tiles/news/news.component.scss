@@ -11,7 +11,10 @@
   padding: 0 1.5em;
 }
 
-.inputWrapper {
+.inputForm {
+  display: grid;
+  align-items: center;
+  padding: 0 1.5em
 }
 
 h3, p {

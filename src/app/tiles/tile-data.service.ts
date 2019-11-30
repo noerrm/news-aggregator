@@ -8,12 +8,17 @@ import { Observable } from 'rxjs';
 export class TileDataService {
 
   url = 'https://newsapi.org/v2/everything?' +
-            'q=(sony OR olympus)&' +
+            'q=()&' +
             'pageSize=30&' +
             'apiKey=d8ad46b675d64f0fa48d926952288a17';
 
   constructor(private http: HttpClient) {}
 
+  searchApiKeyword(input: string): string {
+    this.url = this.url.replace('q=()&', `q=(${input})&`);
+    console.log(this.url);
+    return this.url;
+  }
   getNews(): Observable<any> {
     return this.http.get(this.url);
   }

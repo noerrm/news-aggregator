@@ -3,10 +3,11 @@
   <i class="fas fa-cog fa-10x show" id="loading"></i>
 </div>
 
-<div class="inputWrapper">
-  <label for="apiInput">Search the database: </label>
-  <input id="apiInput">
-</div>
+<form class="inputForm" (ngSubmit)="onSubmit(apiInput.value)">
+    <label for="inputField">Search the news: </label>
+    <input type="text" id="inputField" #apiInput>
+    <button type="submit">Submit</button>
+</form>
 
 <ul>
   <!-- Navigate to article component and pass state of article property. -->

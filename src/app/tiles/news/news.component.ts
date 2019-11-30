@@ -13,9 +13,12 @@ export class NewsComponent implements OnInit {
   public articles: Article[];
   private subscription: Subscription;
 
-  ngOnInit() {
+  onSubmit(keyword: string) {
+    this.newsDataService.searchApiKeyword(keyword);
     this.subscription = this.newsDataService.getNews().subscribe(
-      data => (this.articles = data['articles'])
-    );
+       data => (this.articles = data['articles'])
+     );
   }
+  ngOnInit() {}
 }
+
