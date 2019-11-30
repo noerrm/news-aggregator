@@ -14,6 +14,7 @@ export class NewsComponent implements OnInit {
   private subscription: Subscription;
 
   onSubmit(keyword: string) {
+    console.log(keyword);
     this.newsDataService.searchApiKeyword(keyword);
     this.subscription = this.newsDataService.getNews().subscribe(
        data => (this.articles = data['articles'])

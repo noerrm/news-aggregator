@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TileDataService {
-
   url = 'https://newsapi.org/v2/everything?' +
             'q=()&' +
             'pageSize=30&' +
@@ -15,7 +14,8 @@ export class TileDataService {
   constructor(private http: HttpClient) {}
 
   searchApiKeyword(input: string): string {
-    this.url = this.url.replace('q=()&', `q=(${input})&`);
+    // Replace all characters between q= and & with new input value
+    this.url = this.url.replace(/q=.*&/, `q=(${input})&`);
     console.log(this.url);
     return this.url;
   }

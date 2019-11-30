@@ -3,10 +3,11 @@
   <i class="fas fa-cog fa-10x show" id="loading"></i>
 </div>
 
-<form class="inputForm" (ngSubmit)="onSubmit(apiInput.value)">
+<!-- Send request to api and reset form. -->
+<form #inputForm="ngForm" class="searchApiContainer" (ngSubmit)="onSubmit(apiInput.value)">
     <label for="inputField">Search the news: </label>
     <input type="text" id="inputField" #apiInput>
-    <button type="submit">Submit</button>
+    <button type="submit" (click)="inputForm.reset()">Submit</button>
 </form>
 
 <ul>
