@@ -1,14 +1,16 @@
 <!-- Hide loading animation when data from api is loaded. -->
-<div *ngIf="!articles">
-  <i class="fas fa-cog fa-10x show" id="loading"></i>
-</div>
+<!--<div *ngIf="!articles">-->
 
 <!-- Send request to api and reset form. -->
 <form #inputForm="ngForm" class="searchApiContainer" (ngSubmit)="onSubmit(apiInput.value)">
     <label for="inputField">Search the news: </label>
     <input type="text" id="inputField" #apiInput>
-    <button type="submit" (click)="inputForm.reset()">Submit</button>
+    <button type="submit">Submit</button>
 </form>
+
+<div *ngIf="loadingAnimation">
+  <i class="fas fa-cog fa-10x show" id="loading"></i>
+</div>
 
 <ul>
   <!-- Navigate to article component and pass state of article property. -->

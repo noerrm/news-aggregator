@@ -8,14 +8,13 @@ import { Observable } from 'rxjs';
 export class TileDataService {
   url = 'https://newsapi.org/v2/everything?' +
             'q=()&' +
-            'pageSize=30&' +
             'apiKey=d8ad46b675d64f0fa48d926952288a17';
 
   constructor(private http: HttpClient) {}
 
   searchApiKeyword(input: string): string {
     // Replace all characters between q= and & with new input value
-    this.url = this.url.replace(/q=.*&/, `q=(${input})&`);
+    this.url = this.url.replace(/q=.*&/, `q=(${input})&pageSize=100&`);
     console.log(this.url);
     return this.url;
   }

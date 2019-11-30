@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TileDataService } from '../tile-data.service';
 import { Subscription } from 'rxjs';
 import { Article } from '../article';
@@ -12,14 +12,30 @@ export class NewsComponent implements OnInit {
   constructor(private newsDataService: TileDataService) {}
   public articles: Article[];
   private subscription: Subscription;
+  // Access the form with the id inputForm.
+  @ViewChild('inputForm', {static: false}) formValues;
+  loadingAnimation: boolean;
 
   onSubmit(keyword: string) {
     console.log(keyword);
+    this.loadingAnimation = true;
     this.newsDataService.searchApiKeyword(keyword);
     this.subscription = this.newsDataService.getNews().subscribe(
-       data => (this.articles = data['articles'])
+       data => {
+         this.articles = data['articles'];
+         // Hide animation when all articles are requested.
+         this.loadingAnimation = false;
+       }
      );
+    // Reset the form after submit.
+    this.formValues.reset();
   }
-  ngOnInit() {}
+  // clearInput() {
+  //   const inputField = document.querySelector('inputField');
+  //   inputField.nodeValue = '';
+  // }
+  ngOnInit() {
+    // Hide loading animation on init.
+    this.loadingAnimation = false;
+  }
 }
-
