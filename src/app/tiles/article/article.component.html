@@ -1,5 +1,9 @@
+<div *ngIf="!article">
+  <i class="fas fa-cog fa-10x show" id="loading"></i>
+</div>
 <h3>{{ article.title }}</h3>
 <h4>{{ article.author }}</h4>
 <p>{{ article.publishedAt | date }}</p>
 <img src="{{ article.urlToImage }}">
 <p>{{ article.content }}</p>
+<a [routerLink]="['']"><i class="fas fa-undo fa-3x"></i></a>

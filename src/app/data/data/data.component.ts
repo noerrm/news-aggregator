@@ -10,7 +10,6 @@ export class DataComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    document.getElementById('dataModule').innerHTML = 'Routing to data module works.';
   }
 
 }
