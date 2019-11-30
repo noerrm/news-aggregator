@@ -9,7 +9,9 @@ import { Article } from '../article';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-  constructor(private newsDataService: TileDataService) {}
+  constructor(private newsDataService: TileDataService) {
+  }
+
   public articles: Article[];
   private subscription: Subscription;
   // Access the form with the id inputForm.
@@ -21,12 +23,13 @@ export class NewsComponent implements OnInit {
     this.loadingAnimation = true;
     this.newsDataService.searchApiKeyword(keyword);
     this.subscription = this.newsDataService.getNews().subscribe(
-       data => {
-         this.articles = data['articles'];
-         // Hide animation when all articles are requested.
-         this.loadingAnimation = false;
-       }
-     );
+      data => {
+        this.articles = data['articles'];
+        // Hide animation when all articles are requested.
+        this.loadingAnimation = false;
+        sessionStorage.setItem('articles', JSON.stringify(this.articles));
+      }
+    );
     // Reset the form after submit.
     this.formValues.reset();
   }

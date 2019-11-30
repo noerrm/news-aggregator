@@ -14,7 +14,7 @@ export class TileDataService {
 
   searchApiKeyword(input: string): string {
     // Replace all characters between q= and & with new input value
-    this.url = this.url.replace(/q=.*&/, `q=(${input})&pageSize=100&`);
+    this.url = this.url.replace(/q=.*&/, `q=(${input})&pageSize=30&`);
     console.log(this.url);
     return this.url;
   }
