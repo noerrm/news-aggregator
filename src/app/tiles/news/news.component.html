@@ -2,6 +2,12 @@
 <div *ngIf="!articles">
   <i class="fas fa-cog fa-10x show" id="loading"></i>
 </div>
+
+<div class="inputWrapper">
+  <label for="apiInput">Search the database: </label>
+  <input id="apiInput">
+</div>
+
 <ul>
   <!-- Navigate to article component and pass state of article property. -->
   <a [routerLink]="['/article']" [state]="{ state: article }" *ngFor="let article of articles" id="article-card">

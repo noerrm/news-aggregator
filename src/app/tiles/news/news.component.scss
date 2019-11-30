@@ -9,7 +9,9 @@
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   grid-gap: 1.25em;
   padding: 0 1.5em;
-  background-color: $background-color;
+}
+
+.inputWrapper {
 }
 
 h3, p {
