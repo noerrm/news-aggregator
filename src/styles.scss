@@ -33,7 +33,6 @@ a:visited {
 
 /* Animation is displayed while data from api is requested. */
 #loading{
-  //visibility: hidden;
   animation: spin 4.5s infinite linear;
 }
 
@@ -45,6 +44,9 @@ a:visited {
     }
 }
 
-#spinner.show {
-  visibility: visible;
+.loadingContainer {
+  text-align: center;
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
 }
+

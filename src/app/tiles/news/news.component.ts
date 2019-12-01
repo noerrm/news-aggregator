@@ -13,6 +13,7 @@ export class NewsComponent implements OnInit {
   }
 
   public articles: Article[];
+  private newsData;
   private subscription: Subscription;
   // Access the form with the id inputForm.
   @ViewChild('inputForm', {static: false}) formValues;
@@ -24,21 +25,22 @@ export class NewsComponent implements OnInit {
     this.newsDataService.searchApiKeyword(keyword);
     this.subscription = this.newsDataService.getNews().subscribe(
       data => {
-        this.articles = data['articles'];
+        this.newsData = data['articles'];
         // Hide animation when all articles are requested.
         this.loadingAnimation = false;
-        sessionStorage.setItem('articles', JSON.stringify(this.articles));
+        // Save json data from api in browser session storage.
+        sessionStorage.setItem('articles', JSON.stringify(this.newsData));
+        // Article data is loaded from session storage.
+        this.articles = JSON.parse(sessionStorage.getItem('articles'));
       }
     );
     // Reset the form after submit.
     this.formValues.reset();
   }
-  // clearInput() {
-  //   const inputField = document.querySelector('inputField');
-  //   inputField.nodeValue = '';
-  // }
   ngOnInit() {
     // Hide loading animation on init.
     this.loadingAnimation = false;
+    // Get article data from browser session storage.
+    this.articles = JSON.parse(sessionStorage.getItem('articles'));
   }
 }
