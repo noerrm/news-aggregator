@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TileDataService } from '../../tiles/tile-data.service';
-import * as d3 from 'd3';
+import { select } from 'd3';
 
 @Component({
   selector: 'app-data',
@@ -17,7 +17,7 @@ export class DataComponent implements OnInit {
   chartHeight = 500;
   barWidth = 35;
   barOffset = 5;
-  data = [100, 125, 300, 440, 500];
+  data = [263, 433, 889, 917, 632, 584, 635];
 
   onClick() {
     // Request total results of the keyword for each day of the last week from api.
@@ -34,7 +34,7 @@ export class DataComponent implements OnInit {
   }
   drawBarChart() {
     // Append a svg element to a div.
-      d3.select('#chart')
+      select('#chart').append('svg')
          .attr('width', this.chartWidth)
          .attr('height', this.chartHeight)
          .style('background', '#f4f4f4')
