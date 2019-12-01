@@ -1,0 +1,11 @@
+@import "../../../variables";
+
+:host {
+  display: grid;
+  align-items: center;
+  padding: 0 1.5em
+}
+
+a {
+  text-align: center;
+}

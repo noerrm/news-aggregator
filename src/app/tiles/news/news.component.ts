@@ -14,7 +14,6 @@ export class NewsComponent implements OnInit {
 
   public articles: Article[];
   private newsData;
-  // private totalResults;
   private subscription: Subscription;
   private dates: string[] = [];
   // Access the form with the id inputForm.
@@ -29,13 +28,11 @@ export class NewsComponent implements OnInit {
     this.newsDataService.searchApiKeyword(keyword, this.dates[0]);
     this.subscription = this.newsDataService.getNews().subscribe(
       data => {
-        // this.totalResults = data['totalResults'];
         this.newsData = data['articles'];
         // Hide animation when all articles are requested.
         this.loadingAnimation = false;
         // Save json data from api in browser session storage.
         sessionStorage.setItem('articles', JSON.stringify(this.newsData));
-        // sessionStorage.setItem('results', JSON.stringify(this.totalResults));
         // Article data is loaded from session storage.
         this.articles = JSON.parse(sessionStorage.getItem('articles'));
       }
