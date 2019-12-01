@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TileDataService } from '../../tiles/tile-data.service';
-import { select,  } from 'd3';
+import { select, scaleLinear, scaleOrdinal, max } from 'd3';
 
 @Component({
   selector: 'app-data',
@@ -19,7 +19,8 @@ export class DataComponent implements OnInit {
   barOffset = 5;
   dataResults = [263, 433, 889, 917, 632, 584, 635];
   dataDates = ['2019-12-01', '2019-11-30', '2019-11-29', '2019-11-28', '2019-11-27', '2019-11-26', '2019-11-25'];
-  yScale;
+  // Chart will always display bars even though values are higher than chart height.
+  yScale = scaleLinear().domain([0, max(this.dataResults)]).range([0, this.chartHeight]);
   xScale;
 
   onClick() {
