@@ -9,26 +9,24 @@ import { TileDataService } from '../../tiles/tile-data.service';
 export class DataComponent implements OnInit {
   constructor(private newsDataService: TileDataService) {}
 
-  private resultsOfTheDay: string[];
+  private resultOfTheDay: object;
   private dates: string[] = [];
   private keyword: string;
-  // toDO: Hand keyword from newsComponent to dataComponent via routerlink.
-  onClick(keyword: string) {
-    // Request total results for each day.
+
+  onClick() {
     for (const date in this.dates) {
-      // Set the url to a date.
-      this.newsDataService.searchApiKeyword(keyword, this.dates[this.dates.indexOf(date)]);
+      this.newsDataService.searchApiKeyword(this.keyword, this.dates[date]);
       this.newsDataService.getNews().subscribe(
         data => {
-          const resultOfTheDay = data['totalResults'];
-          this.resultsOfTheDay.push(resultOfTheDay);
+          // Save each date of a day and its value in session storage.
+          this.resultOfTheDay = data['totalResults'];
+          sessionStorage.setItem(this.dates[date], JSON.stringify(this.resultOfTheDay));
         }
       );
     }
   }
   ngOnInit() {
     this.dates = this.newsDataService.getDatesOfLastWeek();
-    this.keyword = JSON.parse(sessionStorage.getItem('keyword'));
+    this.keyword = sessionStorage.getItem('keyword');
   }
-
 }
