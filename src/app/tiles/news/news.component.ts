@@ -14,22 +14,28 @@ export class NewsComponent implements OnInit {
 
   public articles: Article[];
   private newsData;
+  // private totalResults;
   private subscription: Subscription;
+  private dates: string[] = [];
   // Access the form with the id inputForm.
   @ViewChild('inputForm', {static: false}) formValues;
   loadingAnimation: boolean;
 
   onSubmit(keyword: string) {
     console.log(keyword);
+    sessionStorage.setItem('keyword', keyword);
     this.loadingAnimation = true;
-    this.newsDataService.searchApiKeyword(keyword);
+    // Get articles of today.
+    this.newsDataService.searchApiKeyword(keyword, this.dates[0]);
     this.subscription = this.newsDataService.getNews().subscribe(
       data => {
+        // this.totalResults = data['totalResults'];
         this.newsData = data['articles'];
         // Hide animation when all articles are requested.
         this.loadingAnimation = false;
         // Save json data from api in browser session storage.
         sessionStorage.setItem('articles', JSON.stringify(this.newsData));
+        // sessionStorage.setItem('results', JSON.stringify(this.totalResults));
         // Article data is loaded from session storage.
         this.articles = JSON.parse(sessionStorage.getItem('articles'));
       }
@@ -42,5 +48,6 @@ export class NewsComponent implements OnInit {
     this.loadingAnimation = false;
     // Get article data from browser session storage.
     this.articles = JSON.parse(sessionStorage.getItem('articles'));
+    this.dates = this.newsDataService.getDatesOfLastWeek();
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { select } from 'd3';
 
 @Component({
   selector: 'app-data',
