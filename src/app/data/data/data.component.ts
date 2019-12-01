@@ -10,12 +10,12 @@ export class DataComponent implements OnInit {
   constructor(private newsDataService: TileDataService) {}
 
   private resultOfTheDay: object;
+  private session;
   private dates: string[] = [];
-  private keyword: string;
 
   onClick() {
     for (const date in this.dates) {
-      this.newsDataService.searchApiKeyword(this.keyword, this.dates[date]);
+      this.newsDataService.searchApiKeyword(this.session.keyword, this.dates[date]);
       this.newsDataService.getNews().subscribe(
         data => {
           // Save each date of a day and its value in session storage.
@@ -27,6 +27,6 @@ export class DataComponent implements OnInit {
   }
   ngOnInit() {
     this.dates = this.newsDataService.getDatesOfLastWeek();
-    this.keyword = sessionStorage.getItem('keyword');
+    this.session = sessionStorage;
   }
 }
