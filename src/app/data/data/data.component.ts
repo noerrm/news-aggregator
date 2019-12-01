@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TileDataService } from '../../tiles/tile-data.service';
-import { select, scaleLinear, scaleOrdinal, max } from 'd3';
+import { select, scaleLinear, max, range } from 'd3';
+import {sample} from 'rxjs/operators';
 
 @Component({
   selector: 'app-data',
@@ -21,7 +22,7 @@ export class DataComponent implements OnInit {
   dataDates = ['2019-12-01', '2019-11-30', '2019-11-29', '2019-11-28', '2019-11-27', '2019-11-26', '2019-11-25'];
   // Chart will always display bars even though values are higher than chart height.
   yScale = scaleLinear().domain([0, max(this.dataResults)]).range([0, this.chartHeight]);
-  xScale;
+  xScale = scaleLinear().domain([0, max(this.dataResults)]).range([0, this.chartWidth]);
 
   onClick() {
     // Request total results of the keyword for each day of the last week from api.
