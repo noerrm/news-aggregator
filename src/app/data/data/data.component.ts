@@ -49,13 +49,13 @@ export class DataComponent implements OnInit {
             .style('fill', '#F0A202') // Color of the bars.
             .attr('width', this.barWidth) // Width of the bars.
             .attr('height', (d) => { // Set height of bars to value of data.
-              return d;
+              return this.yScale(d);
             })
             .attr('x', (d, i) => {
               return i * (this.barWidth + this.barOffset);
             })
             .attr('y', (d) => {
-              return this.chartHeight - d;
+              return this.chartHeight - this.yScale(d);
             });
   }
   ngOnInit() {
