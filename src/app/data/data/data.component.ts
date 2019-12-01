@@ -49,7 +49,7 @@ export class DataComponent implements OnInit {
             .style('fill', '#F0A202') // Color of the bars.
             .attr('width', this.barWidth) // Width of the bars.
             .attr('height', (d) => { // Set height of bars to value of data.
-              return this.yScale(d);
+              return this.yScale(d); // Scale height of bars with values in the data array.
             })
             .attr('x', (d, i) => {
               return i * (this.barWidth + this.barOffset);
