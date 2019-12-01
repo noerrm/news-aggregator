@@ -16,8 +16,8 @@ export class DataComponent implements OnInit {
   private dates: string[] = [];
   chartWidth = 500;
   chartHeight = 500;
-  barWidth = 35;
-  barOffset = 5;
+  barWidth = 40;
+  barOffset = 8;
   dataResults = [263, 433, 889, 917, 632, 584, 635];
   dataDates = ['2019-12-01', '2019-11-30', '2019-11-29', '2019-11-28', '2019-11-27', '2019-11-26', '2019-11-25'];
   // Chart will always display bars even though values are higher than chart height.
@@ -39,7 +39,10 @@ export class DataComponent implements OnInit {
   }
   drawBarChart() {
     // Append a svg element to a div.
-      select('#chart').append('svg')
+      select('#chart').classed('svg-container', true)
+         .append('svg')
+         .attr('viewBox', '0 0 600 400')
+         .classed('svg-responsive', true)
          .attr('width', this.chartWidth)
          .attr('height', this.chartHeight)
          .style('background', '#f4f4f4')
