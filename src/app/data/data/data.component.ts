@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TileDataService } from '../../tiles/tile-data.service';
-import { select } from 'd3';
+import { select,  } from 'd3';
 
 @Component({
   selector: 'app-data',
@@ -17,7 +17,10 @@ export class DataComponent implements OnInit {
   chartHeight = 500;
   barWidth = 35;
   barOffset = 5;
-  data = [263, 433, 889, 917, 632, 584, 635];
+  dataResults = [263, 433, 889, 917, 632, 584, 635];
+  dataDates = ['2019-12-01', '2019-11-30', '2019-11-29', '2019-11-28', '2019-11-27', '2019-11-26', '2019-11-25'];
+  yScale;
+  xScale;
 
   onClick() {
     // Request total results of the keyword for each day of the last week from api.
@@ -39,7 +42,7 @@ export class DataComponent implements OnInit {
          .attr('height', this.chartHeight)
          .style('background', '#f4f4f4')
          .selectAll('rect')
-         .data(this.data)
+         .data(this.dataResults)
          .enter().append('rect')
             .style('fill', '#F0A202') // Color of the bars.
             .attr('width', this.barWidth) // Width of the bars.
