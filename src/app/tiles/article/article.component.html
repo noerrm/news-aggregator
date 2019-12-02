@@ -1,8 +1,10 @@
-<h3>{{ article.title }}</h3>
-<h4>{{ article.author }}</h4>
-<p>{{ article.publishedAt | date }}</p>
-<div id="image-container">
-<img src="{{ article.urlToImage }}">
-</div>
+<div class="article-container">
+  <h3>{{ article.title }}</h3>
+  <h4>{{ article.author }}</h4>
+  <p>{{ article.publishedAt | date }}</p>
+  <div id="image-container">
+    <img src="{{ article.urlToImage }}">
+  </div>
 <p>{{ article.content }}</p>
+</div>
 <a [routerLink]="['']"><i class="fas fa-undo fa-3x"></i></a>
