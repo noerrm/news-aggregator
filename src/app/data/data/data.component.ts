@@ -33,13 +33,10 @@ export class DataComponent implements OnInit {
     }
   }
   fillDataArray() {
-    console.log(this.dates);
     for (let i = 0; i < this.dates.length; i++) {
-      console.log();
       const result = sessionStorage.getItem(this.dates[i]);
       this.data.push(Number(result));
     }
-    console.log(this.data);
   }
   drawBarChart() {
     // Chart will always display bars even though values are higher than chart height.
