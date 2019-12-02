@@ -53,6 +53,7 @@ export class DataComponent implements OnInit {
          .attr('width', this.chartWidth)
          .attr('height', this.chartHeight)
          .style('background', '#f4f4f4')
+         .append('g')
          .selectAll('rect')
          .data(this.data)
          .enter().append('rect')
