@@ -50,6 +50,8 @@ h4 {
   img {
     max-width: 100%;
     height: auto;
+    display: block;
+    margin: 0 auto;
   }
 }
 
@@ -58,10 +60,17 @@ h4 {
   img {
     max-width: 100%;
     height: auto;
+    display: block;
+    margin: 0 auto;
   }
 }
 
 /* xLarge to xxLarge */
 @media only screen and (min-width: 85.375em) and (max-width: 120em) {
-
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
 }
