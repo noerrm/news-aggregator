@@ -24,8 +24,8 @@ h4 {
   margin-bottom: 0.1em;
 }
 
-img {
-  @include media('small'){
+@include media('small') {
+  img {
     /* Prevent images from overflowing. */
     max-width: 100%;
     height: auto;
@@ -35,10 +35,7 @@ img {
     left: 0;
     top: 0;
   }
-}
-
-#image-container {
-  @include media('small') {
+  #image-container {
     /* Container for absolute positioned elements. */
     position: relative;
     /* Sets the aspect ratio to 16:9 -> A width of " " % of the parent container. */
@@ -47,3 +44,4 @@ img {
     overflow: hidden;
   }
 }
+

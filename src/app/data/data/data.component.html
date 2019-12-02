@@ -1,3 +1,6 @@
 <button (click)="onClick()">Get data</button>
+<div *ngIf="loadingAnimation" class="loadingContainer">
+  <i class="fas fa-cog fa-10x show" id="loading"></i>
+</div>
 <div id="chart"></div>
 <a [routerLink]="['']"><i class="fas fa-undo fa-3x"></i></a>

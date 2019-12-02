@@ -18,19 +18,26 @@ export class DataComponent implements OnInit {
   barWidth = 40;
   barOffset = 8;
   data: number[] = [];
+  loadingAnimation: boolean;
 
   onClick() {
-    // Request total results of the keyword for each day of the last week from api.
-    for (const date in this.dates) {
-      this.newsDataService.searchApiKeyword(this.session.keyword, this.dates[date]);
-      this.newsDataService.getNews().subscribe(
-        data => {
-          // Save each date of a day and its value in session storage.
-          this.resultOfTheDay = data['totalResults'];
-          sessionStorage.setItem(this.dates[date], JSON.stringify(this.resultOfTheDay));
-        }
-      );
-    }
+    // this.loadingAnimation = true;
+    // // Request total results of the keyword for each day of the last week from api.
+    // for (const date in this.dates) {
+    //   this.newsDataService.searchApiKeyword(this.session.keyword, this.dates[date]);
+    //   this.newsDataService.getNews().subscribe(
+    //     data => {
+    //       // Save each date of a day and its value in session storage.
+    //       this.resultOfTheDay = data['totalResults'];
+    //       this.loadingAnimation = false;
+    //       sessionStorage.setItem(this.dates[date], JSON.stringify(this.resultOfTheDay));
+    //       // Show chart when data is available.
+    //       this.dataRequested = true;
+    //     }
+    //   );
+    // }
+    this.fillDataArray();
+    this.drawBarChart();
   }
   fillDataArray() {
     for (let i = 0; i < this.dates.length; i++) {
@@ -70,7 +77,5 @@ export class DataComponent implements OnInit {
   ngOnInit() {
     this.dates = this.newsDataService.getDatesOfLastWeek();
     this.session = sessionStorage;
-    this.fillDataArray();
-    this.drawBarChart();
   }
 }
