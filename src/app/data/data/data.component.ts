@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TileDataService } from '../../tiles/tile-data.service';
-import { select, scaleLinear, max, csv } from 'd3';
+import { select, scaleLinear, max } from 'd3';
 
 @Component({
   selector: 'app-data',
@@ -17,11 +17,7 @@ export class DataComponent implements OnInit {
   chartHeight = 500;
   barWidth = 40;
   barOffset = 8;
-  dataResults = [263, 433, 889, 917, 632, 584, 635];
-  dataDates = ['2019-12-01', '2019-11-30', '2019-11-29', '2019-11-28', '2019-11-27', '2019-11-26', '2019-11-25'];
-  // Chart will always display bars even though values are higher than chart height.
-  yScale = scaleLinear().domain([0, max(this.dataResults)]).range([0, this.chartHeight]);
-  xScale = scaleLinear().domain([0, max(this.dataResults)]).range([0, this.chartWidth]);
+  data: number[] = [];
 
   onClick() {
     // Request total results of the keyword for each day of the last week from api.
@@ -36,9 +32,21 @@ export class DataComponent implements OnInit {
       );
     }
   }
+  fillDataArray() {
+    console.log(this.dates);
+    for (let i = 0; i < this.dates.length; i++) {
+      console.log();
+      const result = sessionStorage.getItem(this.dates[i]);
+      this.data.push(Number(result));
+    }
+    console.log(this.data);
+  }
   drawBarChart() {
+    // Chart will always display bars even though values are higher than chart height.
+    const yScale = scaleLinear().domain([0, max(this.data)]).range([0, this.chartHeight]);
+    const xScale = scaleLinear().domain([0, max(this.data)]).range([0, this.chartWidth]);
     // Append a svg element to a div.
-      select('#chart').classed('svg-container', true)
+    select('#chart').classed('svg-container', true)
          .append('svg')
          .attr('viewBox', '0 0 600 400')
          .classed('svg-responsive', true)
@@ -46,23 +54,24 @@ export class DataComponent implements OnInit {
          .attr('height', this.chartHeight)
          .style('background', '#f4f4f4')
          .selectAll('rect')
-         .data(this.dataResults)
+         .data(this.data)
          .enter().append('rect')
             .style('fill', '#F0A202') // Color of the bars.
             .attr('width', this.barWidth) // Width of the bars.
             .attr('height', (d) => { // Set height of bars to value of data.
-              return this.yScale(d); // Scale height of bars with values in the data array.
+              return yScale(d); // Scale height of bars with values in the data array.
             })
             .attr('x', (d, i) => {
               return i * (this.barWidth + this.barOffset);
             })
             .attr('y', (d) => {
-              return this.chartHeight - this.yScale(d);
+              return this.chartHeight - yScale(d);
             });
   }
   ngOnInit() {
     this.dates = this.newsDataService.getDatesOfLastWeek();
     this.session = sessionStorage;
+    this.fillDataArray();
     this.drawBarChart();
   }
 }
