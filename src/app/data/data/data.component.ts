@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TileDataService } from '../../tiles/tile-data.service';
-import { select, scaleLinear, max, range } from 'd3';
-import {sample} from 'rxjs/operators';
+import { select, scaleLinear, max, csv } from 'd3';
 
 @Component({
   selector: 'app-data',
