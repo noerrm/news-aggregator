@@ -47,12 +47,18 @@ h4 {
 
 /* Medium to Large */
 @media only screen and (min-width: 48em) and (max-width: 64em) {
-
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 /* Large to xLarge */
 @media only screen and (min-width: 64em) and (max-width: 85.375em) {
-
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 /* xLarge to xxLarge */
