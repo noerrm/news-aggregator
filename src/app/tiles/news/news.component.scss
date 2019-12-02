@@ -46,3 +46,25 @@ h3, p {
 #article-card:hover, #article-card:focus {
   box-shadow: 3px 3px 7px rgba(240, 162, 2, 0.9);
 }
+
+/* Styles for responsive images. */
+
+img {
+  /* Prevent images from overflowing. */
+  max-width: 100%;
+  height: auto;
+  /* Removed from the normal document flow. Stays at the default position which is its parent div. */
+  position: absolute;
+  /* Set coordinates to zero. The element now needs to know which parent is its reference point for its position. */
+  left: 0;
+  top: 0;
+}
+
+#image-container {
+  /* Container for absolute positioned elements. */
+  position: relative;
+  /* Sets the aspect ratio to 16:9 -> A width of " " % of the parent container. */
+  padding-top: 56.25%;
+  /* Images that have a bigger height than the parent container are cropped. */
+  overflow: hidden;
+}
