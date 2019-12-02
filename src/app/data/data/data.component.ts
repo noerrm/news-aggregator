@@ -54,7 +54,7 @@ export class DataComponent implements OnInit {
          .attr('height', this.chartHeight)
          .style('background', '#f4f4f4')
          .append('g')
-         .classed('rectangle-container', true).style('transform', 'translate(50%, 50%)')
+         .classed('rectangle-container', true).style('transform', 'translate(25%, 0)')
          .selectAll('rect')
          .data(this.data)
          .enter().append('rect')

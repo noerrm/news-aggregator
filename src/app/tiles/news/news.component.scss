@@ -16,7 +16,12 @@ form {
 }
 
 form input {
-  margin-bottom: 0.5em;
+  width: 26em;
+}
+
+.input-container {
+  display: grid;
+  margin: 0 auto;
 }
 
 .searchApiContainer {
