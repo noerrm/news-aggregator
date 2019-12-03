@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TileDataService } from '../../tiles/tile-data.service';
 import { select, scaleLinear, max } from 'd3';
+import * as c3 from 'c3';
 
 @Component({
   selector: 'app-data',
@@ -36,7 +37,7 @@ export class DataComponent implements OnInit {
     //   );
     // }
     this.fillDataArray();
-    this.drawBarChart();
+    this.drawC3BarChart();
     console.log(this.data);
   }
   fillDataArray() {
@@ -45,38 +46,54 @@ export class DataComponent implements OnInit {
       this.data.push(Number(result));
     }
   }
-  drawBarChart() {
-    select('svg').remove();
-    // Chart will always display bars even though values are higher than chart height.
-    const yScale = scaleLinear().domain([0, max(this.data)]).range([0, this.chartHeight]);
-    const xScale = scaleLinear().domain([0, max(this.data)]).range([0, this.chartWidth]);
-    // Append a svg element to a div.
-    select('#chart').classed('svg-container', true)
-         .append('svg')
-         .attr('viewBox', '0 0 600 400')
-         .attr('preserveAspectRatio', 'xMidYMid meet')
-         .classed('svg-responsive', true)
-         .attr('width', this.chartWidth)
-         .attr('height', this.chartHeight)
-         .style('background', '#f4f4f4')
-         .append('g')
-         .classed('rectangle-container', true)
-         .style('transform', 'translate(25%, 0)')
-         .selectAll('rect')
-         .data(this.data)
-         .enter().append('rect')
-            .style('fill', '#F0A202') // Color of the bars.
-            .attr('width', this.barWidth) // Width of the bars.
-            .attr('height', (d) => { // Set height of bars to value of data.
-              return yScale(d); // Scale height of bars with values in the data array.
-            })
-            .attr('x', (d, i) => {
-              return i * (this.barWidth + this.barOffset);
-            })
-            .attr('y', (d) => {
-              return this.chartHeight - yScale(d);
-            });
+  drawC3BarChart() {
+    c3.generate({
+      bindto: '#chart',
+      data: {
+        columns: [
+          ['data', 30, 200, 100, 400, 150, 250],
+        ],
+        type: 'bar'
+      },
+      bar: {
+        width: {
+          ratio: 0.5
+        }
+      }
+    });
   }
+  // drawBarChart() {
+  //   select('svg').remove();
+  //   // Chart will always display bars even though values are higher than chart height.
+  //   const yScale = scaleLinear().domain([0, max(this.data)]).range([0, this.chartHeight]);
+  //   const xScale = scaleLinear().domain([0, max(this.data)]).range([0, this.chartWidth]);
+  //   // Append a svg element to a div.
+  //   select('#chart').classed('svg-container', true)
+  //        .append('svg')
+  //        .attr('viewBox', '0 0 600 400')
+  //        .attr('preserveAspectRatio', 'xMidYMid meet')
+  //        .classed('svg-responsive', true)
+  //        .attr('width', this.chartWidth)
+  //        .attr('height', this.chartHeight)
+  //        .style('background', '#f4f4f4')
+  //        .append('g')
+  //        .classed('rectangle-container', true)
+  //        .style('transform', 'translate(25%, 0)')
+  //        .selectAll('rect')
+  //        .data(this.data)
+  //        .enter().append('rect')
+  //           .style('fill', '#F0A202') // Color of the bars.
+  //           .attr('width', this.barWidth) // Width of the bars.
+  //           .attr('height', (d) => { // Set height of bars to value of data.
+  //             return yScale(d); // Scale height of bars with values in the data array.
+  //           })
+  //           .attr('x', (d, i) => {
+  //             return i * (this.barWidth + this.barOffset);
+  //           })
+  //           .attr('y', (d) => {
+  //             return this.chartHeight - yScale(d);
+  //           });
+  // }
 
   ngOnInit() {
     this.dates = this.newsDataService.getDatesOfLastWeek();
