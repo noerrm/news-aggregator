@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TileDataService } from '../../tiles/tile-data.service';
 import * as c3 from 'c3';
-import { format } from 'd3';
 
 @Component({
   selector: 'app-data',
@@ -20,6 +19,7 @@ export class DataComponent implements OnInit {
   // barOffset = 8;
   data: number[] = [];
   loadingAnimation: boolean;
+  clicked = false;
 
   onClick() {
     // this.loadingAnimation = true;
@@ -51,7 +51,7 @@ export class DataComponent implements OnInit {
       bindto: '#chart',
       data: {
         columns: [
-          ['Keyword occured', 30, 200, 100, 400, 150, 250, 234],
+          ['Keyword occured', ...this.data]
         ],
         type: 'bar',
         labels: true,

@@ -1,4 +1,4 @@
-<button (click)="onClick()">Get data</button>
+<button (click)="onClick(); clicked = true" [disabled]="clicked">Get data</button>
 <div *ngIf="loadingAnimation" class="loadingContainer">
   <i class="fas fa-cog fa-10x show" id="loading"></i>
 </div>
