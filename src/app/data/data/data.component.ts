@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TileDataService } from '../../tiles/tile-data.service';
 import * as c3 from 'c3';
+import { format } from 'd3';
 
 @Component({
   selector: 'app-data',
@@ -50,11 +51,11 @@ export class DataComponent implements OnInit {
       bindto: '#chart',
       data: {
         columns: [
-          ['data', 30, 200, 100, 400, 150, 250],
+          ['Keyword occured', 30, 200, 100, 400, 150, 250, 234],
         ],
         type: 'bar',
         colors: {
-          'data': '#F0A202'
+          'Keyword occured': '#F0A202'
         }
       },
       bar: {
@@ -67,6 +68,9 @@ export class DataComponent implements OnInit {
           type: 'category',
           categories: this.dates
         }
+      },
+      tooltip: {
+        show: false
       }
     });
   }
