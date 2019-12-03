@@ -54,6 +54,7 @@ export class DataComponent implements OnInit {
           ['Keyword occured', 30, 200, 100, 400, 150, 250, 234],
         ],
         type: 'bar',
+        labels: true,
         colors: {
           'Keyword occured': '#F0A202'
         }
@@ -71,7 +72,7 @@ export class DataComponent implements OnInit {
       },
       tooltip: {
         show: false
-      }
+      },
     });
   }
   onResize() {
