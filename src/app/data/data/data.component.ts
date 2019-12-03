@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TileDataService } from '../../tiles/tile-data.service';
-import { select, scaleLinear, max } from 'd3';
 import * as c3 from 'c3';
 
 @Component({
@@ -14,10 +13,10 @@ export class DataComponent implements OnInit {
   private resultOfTheDay: object;
   private session;
   private dates: string[] = [];
-  chartWidth = 500;
-  chartHeight = 500;
-  barWidth = 40;
-  barOffset = 8;
+  // chartWidth = 500;
+  // chartHeight = 500;
+  // barWidth = 40;
+  // barOffset = 8;
   data: number[] = [];
   loadingAnimation: boolean;
 
