@@ -71,11 +71,13 @@ button:hover {
 
 /* Styles for bar chart */
 .c3-axis-x, .c3-axis-y {
-  stroke:#fff;
+ fill:#fff;
 }
 
 path.domain {
-  stroke:#fff;
+ stroke:#fff;
 }
 
-
+.c3-legend-item text {
+  fill: #FFFFFF;
+}
