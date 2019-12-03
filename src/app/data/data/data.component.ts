@@ -20,6 +20,7 @@ export class DataComponent implements OnInit {
   barOffset = 8;
   data: number[] = [];
   loadingAnimation: boolean;
+  private chart;
 
   onClick() {
     // this.loadingAnimation = true;
@@ -47,13 +48,16 @@ export class DataComponent implements OnInit {
     }
   }
   drawC3BarChart() {
-    c3.generate({
+    this.chart = c3.generate({
       bindto: '#chart',
       data: {
         columns: [
           ['data', 30, 200, 100, 400, 150, 250],
         ],
-        type: 'bar'
+        type: 'bar',
+        colors: {
+          'data': '#F0A202'
+        }
       },
       bar: {
         width: {
@@ -61,6 +65,9 @@ export class DataComponent implements OnInit {
         }
       }
     });
+  }
+  onResize() {
+    this.drawC3BarChart();
   }
   // drawBarChart() {
   //   select('svg').remove();
