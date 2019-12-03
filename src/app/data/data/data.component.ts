@@ -32,12 +32,12 @@ export class DataComponent implements OnInit {
     //       this.loadingAnimation = false;
     //       sessionStorage.setItem(this.dates[date], JSON.stringify(this.resultOfTheDay));
     //       // Show chart when data is available.
-    //       this.dataRequested = true;
     //     }
     //   );
     // }
     this.fillDataArray();
     this.drawBarChart();
+    console.log(this.data);
   }
   fillDataArray() {
     for (let i = 0; i < this.dates.length; i++) {
@@ -46,6 +46,7 @@ export class DataComponent implements OnInit {
     }
   }
   drawBarChart() {
+    select('svg').remove();
     // Chart will always display bars even though values are higher than chart height.
     const yScale = scaleLinear().domain([0, max(this.data)]).range([0, this.chartHeight]);
     const xScale = scaleLinear().domain([0, max(this.data)]).range([0, this.chartWidth]);
@@ -53,12 +54,14 @@ export class DataComponent implements OnInit {
     select('#chart').classed('svg-container', true)
          .append('svg')
          .attr('viewBox', '0 0 600 400')
+         .attr('preserveAspectRatio', 'xMidYMid meet')
          .classed('svg-responsive', true)
          .attr('width', this.chartWidth)
          .attr('height', this.chartHeight)
          .style('background', '#f4f4f4')
          .append('g')
-         .classed('rectangle-container', true).style('transform', 'translate(25%, 0)')
+         .classed('rectangle-container', true)
+         .style('transform', 'translate(25%, 0)')
          .selectAll('rect')
          .data(this.data)
          .enter().append('rect')
@@ -74,6 +77,7 @@ export class DataComponent implements OnInit {
               return this.chartHeight - yScale(d);
             });
   }
+
   ngOnInit() {
     this.dates = this.newsDataService.getDatesOfLastWeek();
     this.session = sessionStorage;
