@@ -20,7 +20,6 @@ export class DataComponent implements OnInit {
   barOffset = 8;
   data: number[] = [];
   loadingAnimation: boolean;
-  private chart;
 
   onClick() {
     // this.loadingAnimation = true;
@@ -48,7 +47,7 @@ export class DataComponent implements OnInit {
     }
   }
   drawC3BarChart() {
-    this.chart = c3.generate({
+    c3.generate({
       bindto: '#chart',
       data: {
         columns: [

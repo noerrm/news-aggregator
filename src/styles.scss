@@ -70,6 +70,12 @@ button:hover {
 }
 
 /* Styles for bar chart */
-.c3-bar {
-  fill: #F0A202;
+.c3-axis-x, .c3-axis-y {
+  stroke:#fff;
 }
+
+path.domain {
+  stroke:#fff;
+}
+
+
