@@ -61,6 +61,12 @@ export class DataComponent implements OnInit {
         width: {
           ratio: 0.5
         }
+      },
+      axis: {
+        x: {
+          type: 'category',
+          categories: this.dates
+        }
       }
     });
   }
