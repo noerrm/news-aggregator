@@ -23,7 +23,6 @@ export class NewsComponent implements OnInit {
   faCog = faCog;
 
   onSubmit(keyword: string) {
-    console.log(keyword);
     sessionStorage.setItem('keyword', keyword);
     this.loadingAnimation = true;
     // Get articles of today.

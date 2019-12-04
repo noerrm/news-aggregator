@@ -35,15 +35,17 @@ export class DataComponent implements OnInit {
       );
     }
     // Clear data array before filling.
-    this.data.length = 0;
+    // this.data.length = 0;
     console.log(this.data);
     this.fillDataArray();
+    console.log(this.data);
     this.drawC3BarChart();
   }
   fillDataArray() {
     for (let i = 0; i < this.dates.length; i++) {
       const result = sessionStorage.getItem(this.dates[i]);
       this.data.push(Number(result));
+      console.log(this.data);
     }
   }
   drawC3BarChart() {
@@ -81,39 +83,6 @@ export class DataComponent implements OnInit {
   onResize() {
     this.drawC3BarChart();
   }
-  // drawBarChart() {
-  //   select('svg').remove();
-  //   // Chart will always display bars even though values are higher than chart height.
-  //   const yScale = scaleLinear().domain([0, max(this.data)]).range([0, this.chartHeight]);
-  //   const xScale = scaleLinear().domain([0, max(this.data)]).range([0, this.chartWidth]);
-  //   // Append a svg element to a div.
-  //   select('#chart').classed('svg-container', true)
-  //        .append('svg')
-  //        .attr('viewBox', '0 0 600 400')
-  //        .attr('preserveAspectRatio', 'xMidYMid meet')
-  //        .classed('svg-responsive', true)
-  //        .attr('width', this.chartWidth)
-  //        .attr('height', this.chartHeight)
-  //        .style('background', '#f4f4f4')
-  //        .append('g')
-  //        .classed('rectangle-container', true)
-  //        .style('transform', 'translate(25%, 0)')
-  //        .selectAll('rect')
-  //        .data(this.data)
-  //        .enter().append('rect')
-  //           .style('fill', '#F0A202') // Color of the bars.
-  //           .attr('width', this.barWidth) // Width of the bars.
-  //           .attr('height', (d) => { // Set height of bars to value of data.
-  //             return yScale(d); // Scale height of bars with values in the data array.
-  //           })
-  //           .attr('x', (d, i) => {
-  //             return i * (this.barWidth + this.barOffset);
-  //           })
-  //           .attr('y', (d) => {
-  //             return this.chartHeight - yScale(d);
-  //           });
-  // }
-
   ngOnInit() {
     this.dates = this.newsDataService.getDatesOfLastWeek();
     this.session = sessionStorage;
