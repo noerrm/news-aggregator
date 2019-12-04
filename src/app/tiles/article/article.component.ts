@@ -12,7 +12,7 @@ import { faUndo } from '@fortawesome/free-solid-svg-icons';
 })
 export class ArticleComponent implements OnInit {
   state: Observable<object>;
-  private article: Article;
+  public article: Article;
   faUndo = faUndo;
   constructor(public activatedRoute: ActivatedRoute) {}
 
