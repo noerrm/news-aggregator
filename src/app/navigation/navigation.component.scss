@@ -1,12 +1,8 @@
 @import "../../variables";
+@import "../../media-queries";
 
 :host {
   text-align: center;
-}
-
-#navbar ul {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
 }
 
 #navbar {
@@ -14,11 +10,60 @@
   overflow: auto;
 }
 
-.navitem {
-  margin: 0.9em auto;
+#navbar ul {
+  margin: 1em 0 1em 0;
 }
 
 .navlink {
   color: $text-color-active;
   font-size: 3em;
+}
+
+@include media('small') {
+  #navbar ul {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media only screen and (min-width: 48em) and (max-width: 64em) {
+  #navbar {
+    background: linear-gradient(350deg, rgba(14, 20, 40, 1) 68%, rgba(132, 132, 152, 1) 100%);
+    overflow: auto;
+  }
+  #navbar ul {
+    display: flex;
+    padding-left: 1.5em
+  }
+  .linkData {
+    padding-left: 1em;
+  }
+}
+
+@media only screen and (min-width: 64em) and (max-width: 85.375em) {
+  #navbar {
+    background: linear-gradient(352deg, rgba(14, 20, 40, 1) 74%, rgba(132, 132, 152, 1) 100%);
+    overflow: auto;
+  }
+  #navbar ul {
+    display: flex;
+    padding-left: 1.5em
+  }
+  .linkData {
+    padding-left: 1em;
+  }
+}
+
+@media only screen and (min-width: 85.375em) and (max-width: 120em) {
+  #navbar {
+    background: linear-gradient(350deg, rgba(14, 20, 40, 1) 80%, rgba(132, 132, 152, 1) 100%);
+    overflow: auto;
+  }
+  #navbar ul {
+    display: flex;
+    padding-left: 1.5em
+  }
+  .linkData {
+    padding-left: 1em;
+  }
 }
