@@ -13,10 +13,6 @@ export class DataComponent implements OnInit {
   private resultOfTheDay: object;
   private session;
   private dates: string[] = [];
-  // chartWidth = 500;
-  // chartHeight = 500;
-  // barWidth = 40;
-  // barOffset = 8;
   data: number[] = [];
   loadingAnimation: boolean;
   clicked = false;
@@ -36,9 +32,11 @@ export class DataComponent implements OnInit {
     //     }
     //   );
     // }
+    // Clear data array before filling.
+    this.data.length = 0;
+    console.log(this.data);
     this.fillDataArray();
     this.drawC3BarChart();
-    console.log(this.data);
   }
   fillDataArray() {
     for (let i = 0; i < this.dates.length; i++) {
@@ -73,6 +71,9 @@ export class DataComponent implements OnInit {
       tooltip: {
         show: false
       },
+      padding: {
+        bottom: 25
+      }
     });
   }
   onResize() {
