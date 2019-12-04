@@ -1,6 +1,6 @@
 <button (click)="onClick(); clicked = true" [disabled]="clicked">Get data</button>
 <div *ngIf="loadingAnimation" class="loadingContainer">
-  <i class="fas fa-cog fa-10x show" id="loading"></i>
+  <fa-icon [icon]="faCog" size="10x" [spin]="true" id="loading"></fa-icon>
 </div>
 <div (window:resize)="onResize()" id="chart"></div>
 <a [routerLink]="['']"><i class="fas fa-undo fa-3x"></i></a>

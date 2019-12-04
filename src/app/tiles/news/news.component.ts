@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { TileDataService } from '../tile-data.service';
 import { Subscription } from 'rxjs';
 import { Article } from '../article';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-news',
@@ -19,6 +20,7 @@ export class NewsComponent implements OnInit {
   // Access the form with the id inputForm.
   @ViewChild('inputForm', {static: false}) formValues;
   loadingAnimation: boolean;
+  faCog = faCog;
 
   onSubmit(keyword: string) {
     console.log(keyword);

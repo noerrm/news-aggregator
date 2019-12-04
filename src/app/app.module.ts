@@ -10,6 +10,8 @@ import { TileDataService } from './tiles/tile-data.service';
 import { TilesModule } from './tiles/tiles.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     TilesModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [TileDataService],
   bootstrap: [AppComponent]

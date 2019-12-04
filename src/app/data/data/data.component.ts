@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TileDataService } from '../../tiles/tile-data.service';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 import * as c3 from 'c3';
 
 @Component({
@@ -16,6 +17,7 @@ export class DataComponent implements OnInit {
   data: number[] = [];
   loadingAnimation: boolean;
   clicked = false;
+  faCog = faCog;
 
   onClick() {
     this.loadingAnimation = true;

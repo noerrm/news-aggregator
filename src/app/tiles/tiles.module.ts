@@ -5,6 +5,7 @@ import { TilesRoutingModule } from './tiles-routing.module';
 import { NewsComponent } from './news/news.component';
 import { ArticleComponent } from './article/article.component';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     TilesRoutingModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ]
 })
 export class TilesModule { }
