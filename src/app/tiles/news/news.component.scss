@@ -77,18 +77,42 @@ img {
 
 @media only screen and (min-width: 48em) and (max-width: 64em) {
   .searchApiContainer {
+    display: grid;
+    align-items: center;
     padding: 0 1.5em
+  }
+  .inputContainer {
+    margin: 0 auto;
+  }
+  button {
+    margin: 0 auto;
   }
 }
 
 @media only screen and (min-width: 64em) and (max-width: 85.375em) {
   .searchApiContainer {
+    display: grid;
+    align-items: center;
     padding: 0 1.5em
+  }
+  .inputContainer {
+    margin: 0 auto;
+  }
+  button {
+    margin: 0 auto;
   }
 }
 
 @media only screen and (min-width: 85.375em) and (max-width: 120em) {
   .searchApiContainer {
+    display: grid;
+    align-items: center;
     padding: 0 1.5em
+  }
+  .inputContainer {
+    margin: 0 auto;
+  }
+  button {
+    margin: 0 auto;
   }
 }
