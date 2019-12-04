@@ -13,7 +13,9 @@ export class TileDataService {
             'apiKey=d8ad46b675d64f0fa48d926952288a17';
 
   constructor(private http: HttpClient) {}
-  getDatesOfLastWeek(): string[] {
+  calculateDatesOfLastWeek() {
+    // Reset date array at the beginning of each calulation.
+    this.dates.length = 0;
     // Get dates of the last week starting from today.
     for (let i = 0; i < 7; i++) {
       const date = new Date();
@@ -21,6 +23,8 @@ export class TileDataService {
       const dateString = date.toISOString().split('T')[0];
       this.dates.push(dateString);
     }
+  }
+  getDates() {
     return this.dates;
   }
   searchApiKeyword(input: string, date: string): string {

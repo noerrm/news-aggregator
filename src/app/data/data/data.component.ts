@@ -13,7 +13,6 @@ export class DataComponent implements OnInit {
 
   private resultOfTheDay: object;
   private session;
-  private dates: string[] = [];
   data: number[] = [];
   loadingAnimation: boolean;
   clicked = false;
@@ -21,47 +20,27 @@ export class DataComponent implements OnInit {
   faUndo = faUndo;
 
   onClick() {
+    console.log(this.newsDataService.getDates());
     this.loadingAnimation = true;
-    // // Request total results of the keyword for each day of the last week from api.
-    // for (const date in this.dates) {
-    //   this.newsDataService.searchApiKeyword(this.session.keyword, this.dates[date]);
-    //   this.newsDataService.getNews().subscribe(
-    //     data => {
-    //       // Save each date of a day and its value in session storage.
-    //       this.resultOfTheDay = data['totalResults'];
-    //       this.loadingAnimation = false;
-    //       sessionStorage.setItem(this.dates[date], JSON.stringify(this.resultOfTheDay));
-    //       // Show chart when data is available.
-    //     }
-    //   );
-    // }
-    // Clear data array before filling.
-    // this.data.length = 0;
-    this.fillDataArray();
-    this.drawC3BarChart();
-  }
-  // setTimeout( () => {}, 5000);
-  fillDataArray() {
-        for (let i = 0; i < this.dates.length; i++) {
-          const result = sessionStorage.getItem(this.dates[i]);
-          this.data.push(Number(result));
+   // Request total results of the keyword for each day of the last week from api.
+    for (const date in this.newsDataService.getDates()) {
+      this.newsDataService.searchApiKeyword(this.session.keyword, this.newsDataService.getDates()[date]);
+      this.newsDataService.getNews().subscribe(
+        data => {
+          // Save each date of a day and its value in session storage.
+          this.resultOfTheDay = data['totalResults'];
+          // this.loadingAnimation = false;
+          this.data.push(Number(JSON.stringify(this.resultOfTheDay)));
+          console.log(this.data);
+          // Show chart when data is available.
         }
-        console.log(this.data);
+      );
+    }
+    this.drawBarChart();
   }
-  // fillDataArray = async () => {
-  //   for (let i = 0; i < this.dates.length; i++) {
-  //     const result = await this.getItemfromSessionStorage(this.dates[i])
-  //       .then(() => console.log(result));
-  //   }
-  // };
-  // // this.data.push(Number(result)))
-  // getItemfromSessionStorage = async (item) => {
-  //   await null;
-  //   return sessionStorage.getItem(item);
-  // };
-  drawC3BarChart() {
+  drawBarChart() {
+    this.loadingAnimation = false;
     setTimeout( () => {
-      this.loadingAnimation = false;
       c3.generate({
         bindto: '#chart',
         data: {
@@ -82,7 +61,7 @@ export class DataComponent implements OnInit {
         axis: {
           x: {
             type: 'category',
-            categories: this.dates
+            categories: this.newsDataService.getDates()
           }
         },
         tooltip: {
@@ -92,13 +71,12 @@ export class DataComponent implements OnInit {
           bottom: 25
         }
       });
-    }, 5000);
+    }, 2000);
   }
   onResize() {
-    this.drawC3BarChart();
+    this.drawBarChart();
   }
   ngOnInit() {
-    this.dates = this.newsDataService.getDatesOfLastWeek();
     this.session = sessionStorage;
   }
 }

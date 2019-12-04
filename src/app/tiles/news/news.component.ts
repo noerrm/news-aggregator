@@ -16,7 +16,6 @@ export class NewsComponent implements OnInit {
   public articles: Article[];
   private newsData;
   private subscription: Subscription;
-  private dates: string[] = [];
   // Access the form with the id inputForm.
   @ViewChild('inputForm', {static: false}) formValues;
   loadingAnimation: boolean;
@@ -26,7 +25,7 @@ export class NewsComponent implements OnInit {
     sessionStorage.setItem('keyword', keyword);
     this.loadingAnimation = true;
     // Get articles of today.
-    this.newsDataService.searchApiKeyword(keyword, this.dates[0]);
+    this.newsDataService.searchApiKeyword(keyword, this.newsDataService.getDates()[0]);
     this.subscription = this.newsDataService.getNews().subscribe(
       data => {
         this.newsData = data['articles'];
@@ -46,6 +45,6 @@ export class NewsComponent implements OnInit {
     this.loadingAnimation = false;
     // Get article data from browser session storage.
     this.articles = JSON.parse(sessionStorage.getItem('articles'));
-    this.dates = this.newsDataService.getDatesOfLastWeek();
+    this.newsDataService.calculateDatesOfLastWeek();
   }
 }
