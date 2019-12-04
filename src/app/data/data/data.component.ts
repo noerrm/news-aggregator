@@ -18,20 +18,20 @@ export class DataComponent implements OnInit {
   clicked = false;
 
   onClick() {
-    // this.loadingAnimation = true;
-    // // Request total results of the keyword for each day of the last week from api.
-    // for (const date in this.dates) {
-    //   this.newsDataService.searchApiKeyword(this.session.keyword, this.dates[date]);
-    //   this.newsDataService.getNews().subscribe(
-    //     data => {
-    //       // Save each date of a day and its value in session storage.
-    //       this.resultOfTheDay = data['totalResults'];
-    //       this.loadingAnimation = false;
-    //       sessionStorage.setItem(this.dates[date], JSON.stringify(this.resultOfTheDay));
-    //       // Show chart when data is available.
-    //     }
-    //   );
-    // }
+    this.loadingAnimation = true;
+    // Request total results of the keyword for each day of the last week from api.
+    for (const date in this.dates) {
+      this.newsDataService.searchApiKeyword(this.session.keyword, this.dates[date]);
+      this.newsDataService.getNews().subscribe(
+        data => {
+          // Save each date of a day and its value in session storage.
+          this.resultOfTheDay = data['totalResults'];
+          this.loadingAnimation = false;
+          sessionStorage.setItem(this.dates[date], JSON.stringify(this.resultOfTheDay));
+          // Show chart when data is available.
+        }
+      );
+    }
     // Clear data array before filling.
     this.data.length = 0;
     console.log(this.data);
