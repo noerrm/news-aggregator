@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Article } from '../article';
+import { faUndo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-article',
@@ -12,6 +13,7 @@ import { Article } from '../article';
 export class ArticleComponent implements OnInit {
   state: Observable<object>;
   private article: Article;
+  faUndo = faUndo;
   constructor(public activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
