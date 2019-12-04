@@ -45,12 +45,12 @@ export class DataComponent implements OnInit {
         bindto: '#chart',
         data: {
           columns: [
-            ['Keyword occured', ...this.data]
+            ['Keyword mentioned in the news', ...this.data]
           ],
           type: 'bar',
           labels: true,
           colors: {
-            'Keyword occured': '#F0A202'
+            'Keyword mentioned in the news': '#F0A202'
           }
         },
         bar: {
