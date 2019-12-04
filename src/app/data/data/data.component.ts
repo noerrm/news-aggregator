@@ -28,6 +28,7 @@ export class DataComponent implements OnInit {
         data => {
           // Save each date of a day and its value in session storage.
           this.resultOfTheDay = data['totalResults'];
+          this.loadingAnimation = false;
           this.data.push(Number(JSON.stringify(this.resultOfTheDay)));
           // Show chart when data is available.
         }
@@ -36,7 +37,6 @@ export class DataComponent implements OnInit {
     this.drawBarChart();
   }
   drawBarChart() {
-    this.loadingAnimation = false;
     setTimeout( () => {
       c3.generate({
         bindto: '#chart',
