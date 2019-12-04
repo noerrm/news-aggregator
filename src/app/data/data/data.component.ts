@@ -75,5 +75,6 @@ export class DataComponent implements OnInit {
   }
   ngOnInit() {
     this.session = sessionStorage;
+    this.newsDataService.calculateDatesOfLastWeek();
   }
 }
