@@ -26,9 +26,18 @@ a {
   }
 }
 
+@include media('small') {
+  button {
+    margin: 1em auto 1em auto;
+  }
+}
+
 @media only screen and (min-width: 48em) and (max-width: 64em) {
   #chart {
     margin: 2em 10% 2em 10%;
+  }
+  button {
+    margin: 1em 0 1em 0;
   }
 }
 
@@ -36,10 +45,16 @@ a {
   #chart {
     margin: 2em 20% 2em 20%;
   }
+  button {
+    margin: 1em 0 1em 0;
+  }
 }
 
 @media only screen and (min-width: 85.375em) and (max-width: 120em) {
   #chart {
     margin: 2em 25% 2em 25%;
+  }
+  button {
+    margin: 1em 0 1em 0;
   }
 }
