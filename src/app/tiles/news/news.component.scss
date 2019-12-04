@@ -17,6 +17,7 @@ form {
 
 form input {
   width: 26em;
+  margin-bottom: 1em;
 }
 
 .input-container {
@@ -67,7 +68,10 @@ img {
   .searchApiContainer {
     display: grid;
     align-items: center;
-    padding: 0 1.5em
+    padding: 0 1.5em;
+  }
+  .searchApiContainer button {
+    margin: 0 auto;
   }
 }
 
