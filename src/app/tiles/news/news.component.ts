@@ -3,6 +3,7 @@ import { TileDataService } from '../tile-data.service';
 import { Subscription } from 'rxjs';
 import { Article } from '../article';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-news',

@@ -1,8 +1,8 @@
 <!-- Send request to api and reset form. -->
 <form #inputForm="ngForm" class="searchApiContainer" (ngSubmit)="onSubmit(apiInput.value)">
   <div class="input-container">
-    <label for="inputField">Search the news: </label>
-    <input type="text" id="inputField" #apiInput>
+    <label for="inputField">Search the news for a keyword: </label>
+    <input type="text" id="inputField" #apiInput required>
   </div>
     <button type="submit">Go</button>
 </form>
