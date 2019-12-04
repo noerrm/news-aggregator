@@ -20,7 +20,6 @@ export class DataComponent implements OnInit {
   faUndo = faUndo;
 
   onClick() {
-    console.log(this.newsDataService.getDates());
     this.loadingAnimation = true;
    // Request total results of the keyword for each day of the last week from api.
     for (const date in this.newsDataService.getDates()) {
@@ -29,9 +28,7 @@ export class DataComponent implements OnInit {
         data => {
           // Save each date of a day and its value in session storage.
           this.resultOfTheDay = data['totalResults'];
-          // this.loadingAnimation = false;
           this.data.push(Number(JSON.stringify(this.resultOfTheDay)));
-          console.log(this.data);
           // Show chart when data is available.
         }
       );
